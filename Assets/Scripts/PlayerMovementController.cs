@@ -11,7 +11,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
     private CharacterGrounding _characterGrounding;
     private float _horizontal;
 
-    public float Speed => Mathf.Abs(_horizontal);
+    public float Speed => _horizontal;
 
     private void Awake()
     {
