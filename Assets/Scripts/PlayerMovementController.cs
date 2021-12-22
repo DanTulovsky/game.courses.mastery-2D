@@ -2,21 +2,20 @@ using UnityEngine;
 
 [RequireComponent(typeof(CharacterGrounding))]
 [RequireComponent(typeof(Rigidbody2D))]
-public class PlayerMovementController : MonoBehaviour
+public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 400;
 
     private Rigidbody2D _rigidbody2D;
-    private Animator _animator;
     private CharacterGrounding _characterGrounding;
+    private float _horizontal;
 
-    private static readonly int WalkingProperty = Animator.StringToHash("Walking");
+    public float Speed => Mathf.Abs(_horizontal);
 
     private void Awake()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
-        _animator = GetComponent<Animator>();
         _characterGrounding = GetComponent<CharacterGrounding>();
     }
 
@@ -30,19 +29,18 @@ public class PlayerMovementController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float horizontal = Input.GetAxis("Horizontal");
+        UpdateHorizontal();
 
-        if (Mathf.Abs(horizontal) > 0)
+        if (Mathf.Abs(_horizontal) > 0)
         {
-            if (_animator != null) _animator.SetBool(WalkingProperty, true);
-            Vector3 movement = new Vector3(horizontal, 0);
-
+            Vector3 movement = new Vector3(_horizontal, 0);
             transform.position += movement * (Time.deltaTime * moveSpeed);
         }
-        else
-        {
-            _animator.SetBool(WalkingProperty, false);
-        }
+    }
+
+    private void UpdateHorizontal()
+    {
+        _horizontal = Input.GetAxis("Horizontal");
     }
 
     private void Jump()

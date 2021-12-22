@@ -27,6 +27,8 @@ public class CharacterGrounding : MonoBehaviour
 
     private bool CheckIsGrounded()
     {
+
+        // TODO: This doesn't handle jumping through a second platform, it allows a second jump.
         foreach (Transform foot in _feet)
         {
             RaycastHit2D hit = Physics2D.Raycast(foot.position, Vector2.down, maxDistance, layerMask);
