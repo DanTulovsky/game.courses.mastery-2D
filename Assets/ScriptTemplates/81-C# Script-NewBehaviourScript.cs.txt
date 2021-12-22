@@ -6,12 +6,12 @@ using UnityEngine;
 #ROOTNAMESPACEBEGIN#
 public class #SCRIPTNAME# : MonoBehaviour
 {
-    void Start()
+    private void Start()
     {
         #NOTRIM#
     }
 
-    void Update()
+    private void Update()
     {
         #NOTRIM#
     }
