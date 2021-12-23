@@ -13,7 +13,6 @@ namespace Editor
 
         private static void OnEnterPlayMode(PlayModeStateChange obj)
         {
-            Debug.Log("Refreshing Assets...");
             if (obj == PlayModeStateChange.ExitingEditMode) AssetDatabase.Refresh(ImportAssetOptions.Default);
         }
     }

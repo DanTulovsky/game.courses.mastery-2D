@@ -33,7 +33,7 @@ AnimatorController:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: RobotAnimated_0
+  m_Name: player_walk
   serializedVersion: 5
   m_AnimatorParameters:
   - m_Name: Walking
