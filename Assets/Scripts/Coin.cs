@@ -1,4 +1,3 @@
-
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -13,8 +12,8 @@ public class Coin : MonoBehaviour
     private void Awake()
     {
         _animator = GetComponent<Animator>();
+        _animator.speed = 10;
         _audioSource = GetComponent<AudioSource>();
-        _animator.speed = 3;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
@@ -23,12 +22,15 @@ public class Coin : MonoBehaviour
         _audioSource.Play();
 
         GameManager.Instance.AddCoin();
-        StartCoroutine(Vanish());
+        // StartCoroutine(Vanish());
     }
 
-    private IEnumerator Vanish()
+    // Vanish is called as an event from the Animation Controller.
+    private void Vanish()
     {
-        yield return new WaitForSeconds(1f);
+        // // Wait for animation to end
+        // yield return new WaitForSeconds(_animator.GetCurrentAnimatorStateInfo(0).length +
+        //                                 _animator.GetCurrentAnimatorStateInfo(0).normalizedTime);
         Destroy(gameObject);
     }
 }
