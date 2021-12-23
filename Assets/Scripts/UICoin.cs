@@ -19,4 +19,9 @@ public class UICoin : MonoBehaviour
         Debug.Log("animating");
         transform.DORotate(new Vector3(0, 180, 0), 1f, RotateMode.LocalAxisAdd);
     }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCoinsChanged -= Animate;
+    }
 }

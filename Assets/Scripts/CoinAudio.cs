@@ -2,6 +2,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using Cinemachine;
 using UnityEngine;
 
 [RequireComponent(typeof(AudioSource))]
@@ -16,7 +17,17 @@ public class CoinAudio : MonoBehaviour
 
     private void Start()
     {
-        GameManager.Instance.OnCoinsChanged += (coins) => _audioSource.Play();
+        GameManager.Instance.OnCoinsChanged += Play;
 
+    }
+
+    private void OnDestroy()
+    {
+        GameManager.Instance.OnCoinsChanged -= Play;
+    }
+
+    private void Play(int coins)
+    {
+        _audioSource.Play();
     }
 }
