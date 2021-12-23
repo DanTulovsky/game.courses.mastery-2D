@@ -2,11 +2,13 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Object = UnityEngine.Object;
 
 public class CoinBox : MonoBehaviour
 {
     [SerializeField] private Sprite disabledSprite;
     [SerializeField] private int totalCoins = 1;
+    [SerializeField] private Object coinPrefab;
 
     private SpriteRenderer _spriteRenderer;
     private AudioSource _audioSource;
@@ -30,6 +32,7 @@ public class CoinBox : MonoBehaviour
         if (!HitByPlayer(col)) return;
 
         PlayAudio();
+        PopupCoin();
         
         GameManager.Instance.AddCoin();
         _remainingCoins--;
@@ -40,6 +43,11 @@ public class CoinBox : MonoBehaviour
         }
     }
 
+    private void PopupCoin()
+    {
+        var coin = Instantiate(coinPrefab, transform.position, Quaternion.identity, transform);
+    }
+    
     private void PlayAudio()
     {
         if (_audioSource != null) _audioSource.Play();
