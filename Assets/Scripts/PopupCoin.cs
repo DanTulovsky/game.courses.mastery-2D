@@ -1,13 +1,12 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
 public class PopupCoin : MonoBehaviour
 {
     private Animator _animator;
-    
-    private float _lifeTime = 1f;
-    private float _speed = 4;
+
+    private const float LifeTime = 1f;
+    private const float Speed = 4;
     private static readonly int SpinTrigger = Animator.StringToHash("Spin");
 
     private void Awake()
@@ -19,7 +18,6 @@ public class PopupCoin : MonoBehaviour
     {
         if (_animator != null)
         {
-            Debug.Log("animating");
             _animator.SetTrigger(SpinTrigger);
         }
         StartCoroutine(Die());
@@ -27,13 +25,13 @@ public class PopupCoin : MonoBehaviour
 
     private IEnumerator Die()
     {
-        yield return new WaitForSeconds(_lifeTime);
+        yield return new WaitForSeconds(LifeTime);
         Destroy(gameObject);
     }
 
     private void Update()
     {
         var direction = Vector3.up;
-        transform.position += direction * (_speed * Time.deltaTime);
+        transform.position += direction * (Speed * Time.deltaTime);
     }
 }
