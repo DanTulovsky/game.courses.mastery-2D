@@ -7,17 +7,20 @@ using UnityEngine;
 public class Coin : MonoBehaviour
 {
     private Animator _animator;
+    private AudioSource _audioSource;
     private static readonly int SpinTrigger = Animator.StringToHash("Spin");
 
     private void Awake()
     {
         _animator = GetComponent<Animator>();
-        _animator.speed = 2;
+        _audioSource = GetComponent<AudioSource>();
+        _animator.speed = 3;
     }
 
     private void OnTriggerEnter2D(Collider2D col)
     {
         _animator.SetTrigger(SpinTrigger);
+        _audioSource.Play();
 
         GameManager.Instance.AddCoin();
         StartCoroutine(Vanish());
