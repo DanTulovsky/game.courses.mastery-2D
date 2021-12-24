@@ -23,8 +23,8 @@ public class CoinBox : MonoBehaviour
     {
         if (_remainingCoins <= 0) return;
 
-        if (!HitFromBellow(col)) return;
-        if (!HitByPlayer(col)) return;
+        if (!col.HitFromBellow()) return;
+        if (!col.HitByPlayer()) return;
 
         PopupCoin();
         
@@ -40,15 +40,5 @@ public class CoinBox : MonoBehaviour
     private void PopupCoin()
     {
         Instantiate(coinPrefab, transform.position, Quaternion.identity, transform);
-    }
-    
-    private static bool HitByPlayer(Collision2D col)
-    {
-        return col.collider.GetComponent<PlayerMovementController>();
-    }
-
-    private static bool HitFromBellow(Collision2D col)
-    {
-        return col != null && col.GetContact(0).normal.y > 0;
     }
 }

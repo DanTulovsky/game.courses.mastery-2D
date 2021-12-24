@@ -18,7 +18,6 @@ public class CoinAudio : MonoBehaviour
     private void Start()
     {
         GameManager.Instance.OnCoinsChanged += Play;
-
     }
 
     private void OnDestroy()
