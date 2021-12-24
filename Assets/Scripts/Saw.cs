@@ -6,7 +6,7 @@ public class Saw : MonoBehaviour
 {
     [SerializeField] private Transform start;
     [SerializeField] private Transform end;
-    [SerializeField] private float pathDuration = 6f;
+    [SerializeField] private float speed = 6f;
     [SerializeField] private Sprite sawSprite;
 
     private Vector3[] _wayPoints;
@@ -18,6 +18,10 @@ public class Saw : MonoBehaviour
 
     private void Start()
     {
+
+        GetComponentInChildren<SpriteRenderer>().sprite = sawSprite;
+        
+        float pathDuration = (end.position.x - start.position.x) / speed;
         Sequence sawSequence = DOTween.Sequence().SetLoops(-1, LoopType.Yoyo);
 
         var move = transform.DOPath(_wayPoints, pathDuration, PathType.Linear, PathMode.Sidescroller2D, 10, Color.red)

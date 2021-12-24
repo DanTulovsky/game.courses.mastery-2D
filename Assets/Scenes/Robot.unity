@@ -1024,8 +1024,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   start: {fileID: 1420567204}
   end: {fileID: 1326487741}
-  pathDuration: 6
-  sawSprite: {fileID: 0}
+  speed: 5
+  sawSprite: {fileID: 21300000, guid: 613b14988f467df4dbaefa49d7784a6c, type: 3}
 --- !u!1 &790725521
 GameObject:
   m_ObjectHideFlags: 0
