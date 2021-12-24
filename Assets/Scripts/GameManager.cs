@@ -6,13 +6,15 @@ public class GameManager : MonoBehaviour
 {
     [SerializeField] private int maxLives = 3;
     
-    private int _coins;
     
     public static GameManager Instance { get; private set; }
     public int Lives { get; private set; }
     public event Action<int> OnLivesChanged;
     public event Action<int> OnCoinsChanged;
 
+    private int _coins;
+    private int currentLevelIndex;
+    
     private void Awake()
     {
         if (!Instance)
@@ -60,11 +62,16 @@ public class GameManager : MonoBehaviour
         }
     }
 
-
-
     public void AddCoin()
     {
         _coins++;
         OnCoinsChanged?.Invoke(_coins);
+    }
+
+    public void MoveToNextLevel()
+    {
+        currentLevelIndex++;
+        SceneManager.LoadScene(currentLevelIndex);
+
     }
 }
