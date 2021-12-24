@@ -16,7 +16,6 @@ public class UICoin : MonoBehaviour
 
     private void Animate(int coins)
     {
-        Debug.Log("animating");
         transform.DORotate(new Vector3(0, 180, 0), 1f, RotateMode.LocalAxisAdd);
     }
 
