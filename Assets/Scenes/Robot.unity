@@ -546,6 +546,14 @@ PrefabInstance:
       propertyPath: m_Size.x
       value: 22
       objectReference: {fileID: 0}
+    - target: {fileID: 4185596962978702302, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4185596962978702302, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -489511951
+      objectReference: {fileID: 0}
     - target: {fileID: 4185596962978702303, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
       propertyPath: m_Name
       value: GrassPlatform (1)
@@ -927,6 +935,22 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1095644600}
     m_Modifications:
+    - target: {fileID: 1049256878, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1049256878, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -489511951
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319063115, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayer
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1319063115, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
+      propertyPath: m_SortingLayerID
+      value: -489511951
+      objectReference: {fileID: 0}
     - target: {fileID: 4185596962978702297, guid: 3c7a5b85b72fb410e8c296df93071a1c, type: 3}
       propertyPath: m_RootOrder
       value: 3

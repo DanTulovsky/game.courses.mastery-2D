@@ -47,6 +47,9 @@ TagManager:
   - name: Props Background
     uniqueID: 81650499
     locked: 0
+  - name: Platforms
+    uniqueID: 3805455345
+    locked: 0
   - name: Player
     uniqueID: 3700634279
     locked: 0
