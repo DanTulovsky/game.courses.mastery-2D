@@ -17,8 +17,17 @@ public class ShellFlipped : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D col)
     {
-        if (!col.HitByPlayer()) return;
+        if (col.HitByPlayer())
+            HandlePlayerCollision(col);
+        else
+        {
+            if (col.HitFromSide())
+                LaunchShell(col);
+        }
+    }
 
+    private void HandlePlayerCollision(Collision2D col)
+    {
         var playerMovementController = col.collider.GetComponent<PlayerMovementController>();
 
         if (_direction.magnitude == 0)
