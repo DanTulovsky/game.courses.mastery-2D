@@ -1,7 +1,7 @@
 using UnityEngine;
 using Object = UnityEngine.Object;
 
-public class CoinBox : MonoBehaviour
+public class CoinBox : MonoBehaviour, ITakeShellHits
 {
     [SerializeField] private Sprite disabledSprite;
     [SerializeField] private int totalCoins = 1;
@@ -26,8 +26,13 @@ public class CoinBox : MonoBehaviour
         if (!col.HitFromBellow()) return;
         if (!col.HitByPlayer()) return;
 
+        TakeCoin();
+    }
+
+    private void TakeCoin()
+    {
         PopupCoin();
-        
+
         GameManager.Instance.AddCoin();
         _remainingCoins--;
 
@@ -40,5 +45,11 @@ public class CoinBox : MonoBehaviour
     private void PopupCoin()
     {
         Instantiate(coinPrefab, transform.position, Quaternion.identity, transform);
+    }
+
+    public void HandleShellHit(ShellFlipped shellFlipped)
+    {
+        if (_remainingCoins > 0)
+            TakeCoin();
     }
 }

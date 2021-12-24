@@ -1,3 +1,4 @@
+using System.Security.Cryptography;
 using UnityEngine;
 
 public class ShellFlipped : MonoBehaviour
@@ -22,7 +23,12 @@ public class ShellFlipped : MonoBehaviour
         else
         {
             if (col.HitFromSide())
+            {
                 LaunchShell(col);
+                
+                ITakeShellHits takeShellHits = col.collider.GetComponent<ITakeShellHits>();
+                takeShellHits?.HandleShellHit(this);
+            }
         }
     }
 
@@ -33,7 +39,8 @@ public class ShellFlipped : MonoBehaviour
         if (_direction.magnitude == 0)
         {
             LaunchShell(col);
-            playerMovementController.Bounce();
+            if (col.HitFromTop())
+                playerMovementController.Bounce();
         }
         else
         {
