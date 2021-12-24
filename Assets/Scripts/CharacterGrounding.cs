@@ -10,12 +10,14 @@ public class CharacterGrounding : MonoBehaviour
 
     public bool IsGrounded { get; private set; }
 
+    private Rigidbody2D _rigidbody2D;
     private readonly List<Transform> _feet = new();
     private Transform _groundedObject;
     private Vector3? _groundedObjectLastPosition;
 
     private void Awake()
     {
+        _rigidbody2D = GetComponent<Rigidbody2D>();
         _feet.Add(leftFoot);
         _feet.Add(rightFoot);
     }
@@ -30,13 +32,14 @@ public class CharacterGrounding : MonoBehaviour
 
     private void StickToMovingObjects()
     {
+        
+        // Note that RigidBody2D physics is still in effect. When platform stops, that will affect the player.
         if (_groundedObject != null)
         {
             if (_groundedObjectLastPosition.HasValue && _groundedObjectLastPosition.Value != _groundedObject.position)
             {
                 Vector2 delta = _groundedObject.position - _groundedObjectLastPosition.Value;
-                GetComponent<Rigidbody2D>().position += delta; 
-                // transform.position += delta;
+                _rigidbody2D.position += delta; 
             }
 
             _groundedObjectLastPosition = _groundedObject.position;

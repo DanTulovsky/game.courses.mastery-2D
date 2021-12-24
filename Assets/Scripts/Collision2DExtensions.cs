@@ -9,7 +9,11 @@ public static class Collision2DExtensions
 
     public static bool HitFromBellow(this Collision2D col)
     {
-        return col != null && col.GetContact(0).normal.y > 0;
+        return col != null && col.GetContact(0).normal.y > 0.5;
     }
     
+    public static bool HitFromTop(this Collision2D col)
+    {
+        return col != null && col.GetContact(0).normal.y < -0.5;
+    }
 }
