@@ -25,7 +25,7 @@ public class Saw : MonoBehaviour
         float pathDuration = (end.position.x - start.position.x) / speed;
         Sequence sawSequence = DOTween.Sequence().SetLoops(-1, LoopType.Yoyo);
 
-        var move = transform.DOPath(_wayPoints, pathDuration, PathType.Linear, PathMode.Sidescroller2D, 10, Color.red)
+        var move = _spriteRenderer.transform.DOPath(_wayPoints, pathDuration, PathType.Linear, PathMode.Sidescroller2D, 10, Color.red)
             .SetEase(Ease.Linear);
         var rotate = _spriteRenderer.transform.DOLocalRotate(new Vector3(0, 0, -360), pathDuration, RotateMode.LocalAxisAdd)
             .SetEase(Ease.Linear);
