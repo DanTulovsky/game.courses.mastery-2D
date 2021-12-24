@@ -3,7 +3,7 @@ using UnityEngine;
 public class ShellFlipped : MonoBehaviour
 {
     [SerializeField] private float speed = 5f;
-    
+
     private Collider2D _collider2D;
     private Rigidbody2D _rigidbody2D;
 
@@ -19,13 +19,19 @@ public class ShellFlipped : MonoBehaviour
     {
         if (!col.HitByPlayer()) return;
 
+        var playerMovementController = col.collider.GetComponent<PlayerMovementController>();
+
         if (_direction.magnitude == 0)
+        {
             LaunchShell(col);
+            playerMovementController.Bounce();
+        }
         else
         {
             if (col.HitFromTop())
             {
                 _direction = Vector2.zero;
+                playerMovementController.Bounce();
             }
             else
             {
@@ -45,6 +51,5 @@ public class ShellFlipped : MonoBehaviour
             _direction = Vector2.right;
         if (col.HitFromRight())
             _direction = Vector2.left;
-        
     }
 }

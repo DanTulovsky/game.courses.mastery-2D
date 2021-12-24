@@ -38,17 +38,19 @@ public class Walker : MonoBehaviour
         if (col.HitByPlayer())
         {
             if (col.HitFromTop())
-                HandleWalkerStomp();
+                HandleWalkerStomp(col.collider.GetComponent<PlayerMovementController>());
             else
                 GameManager.Instance.KillPlayer();
         }
     }
 
-    private void HandleWalkerStomp()
+    private void HandleWalkerStomp(PlayerMovementController playerMovementController)
     {
         if (spawnOnStompPrefab != null)
             Instantiate(spawnOnStompPrefab, transform.position, transform.rotation);
 
+        playerMovementController.Bounce(); 
+        
         Destroy(gameObject);
     }
 

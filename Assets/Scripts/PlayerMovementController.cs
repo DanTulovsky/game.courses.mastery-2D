@@ -6,6 +6,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 400;
+    [SerializeField] private float bounceForce = 600;
 
     private Rigidbody2D _rigidbody2D;
     private CharacterGrounding _characterGrounding;
@@ -49,5 +50,10 @@ public class PlayerMovementController : MonoBehaviour, IMove
         {
             _rigidbody2D.AddForce(Vector2.up * jumpForce);
         }
+    }
+
+    public void Bounce()
+    {
+        _rigidbody2D.AddForce(Vector2.up * bounceForce);
     }
 }
