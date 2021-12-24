@@ -119,6 +119,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 4495303863045599067}
     m_Modifications:
+    - target: {fileID: 1593120289907691552, guid: 6d64ad7ff660f49248f49713ef843b74, type: 3}
+      propertyPath: m_Material
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 1593120289907691554, guid: 6d64ad7ff660f49248f49713ef843b74, type: 3}
       propertyPath: m_Name
       value: SnowPlatform
