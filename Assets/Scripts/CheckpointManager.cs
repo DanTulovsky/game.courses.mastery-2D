@@ -9,6 +9,9 @@ public class CheckpointManager : MonoBehaviour
     private void Start()
     {
         _checkpoints = new List<Checkpoint>(GetComponentsInChildren<Checkpoint>());
+        
+        // Set first Checkpoint as passed
+        _checkpoints[0].Passed = true;
     }
 
     public Checkpoint GetLastCheckpointPassed()

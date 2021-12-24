@@ -2,7 +2,8 @@ using UnityEngine;
 
 public class Checkpoint : MonoBehaviour
 {
-    public bool Passed { get; private set; }
+    // TODO: set should be private
+    public bool Passed { get;  set; }
     
     private void OnTriggerEnter2D(Collider2D col)
     {
