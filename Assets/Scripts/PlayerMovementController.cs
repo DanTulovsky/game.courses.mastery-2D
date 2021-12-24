@@ -6,6 +6,7 @@ public class PlayerMovementController : MonoBehaviour, IMove
 {
     [SerializeField] private float moveSpeed = 5;
     [SerializeField] private float jumpForce = 400;
+    [SerializeField] private float wallJumpForce = 300;
     [SerializeField] private float bounceForce = 600;
 
     private Rigidbody2D _rigidbody2D;
@@ -49,6 +50,11 @@ public class PlayerMovementController : MonoBehaviour, IMove
         if (_characterGrounding != null && _characterGrounding.IsGrounded)
         {
             _rigidbody2D.AddForce(Vector2.up * jumpForce);
+
+            if (_characterGrounding.GroundedDirection != Vector2.down)
+            {
+                _rigidbody2D.AddForce(_characterGrounding.GroundedDirection * (-1f * wallJumpForce));
+            }
         }
     }
 
